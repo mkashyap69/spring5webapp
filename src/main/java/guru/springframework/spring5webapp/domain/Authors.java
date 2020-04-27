@@ -1,4 +1,3 @@
-@@ -0,0 +1,66 @@
 
 package guru.springframework.spring5webapp.model;
 
