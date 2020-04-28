@@ -1,5 +1,8 @@
 package guru.springframework.spring5webapp.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,6 +17,11 @@ public class Publishers {
 	private String city;
     private String state;
     private String zip;
+    
+    
+    @OneToMany(cascade= {CascadeType.ALL})
+    @JoinColumn(name="publishers_id")
+    private Set<Books> books=new HashSet<>();
 	public Publishers() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -29,6 +37,12 @@ public class Publishers {
 	
 	
 	
+	public Set<Books> getBooks() {
+		return books;
+	}
+	public void setBooks(Set<Books> books) {
+		this.books = books;
+	}
 	public Long getId() {
 		return Id;
 	}

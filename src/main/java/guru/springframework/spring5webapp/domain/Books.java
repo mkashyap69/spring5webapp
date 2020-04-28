@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Books {
@@ -20,6 +21,9 @@ public class Books {
 	
 	private String title;
 	private String isBn;
+	
+	@ManyToOne
+	private Publishers publishers;
 	
 	@ManyToMany
 	private Set<Authors> authors=new HashSet<>();
@@ -38,6 +42,18 @@ public class Books {
 
 
 	
+
+	public Publishers getPublishers() {
+		return publishers;
+	}
+
+
+
+	public void setPublishers(Publishers publishers) {
+		this.publishers = publishers;
+	}
+
+
 
 	public Long getId() {
 		return Id;
