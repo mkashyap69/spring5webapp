@@ -1,5 +1,5 @@
 
-package guru.springframework.spring5webapp.model;
+package guru.springframework.spring5webapp.domain;
 
 import java.util.Set;
 
@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
 
 @Entity
 public class Authors {
@@ -59,6 +60,33 @@ public class Authors {
 	}
 	public void setBooks(Set<Books> books) {
 		this.books = books;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((Id == null) ? 0 : Id.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Authors other = (Authors) obj;
+		if (Id == null) {
+			if (other.Id != null)
+				return false;
+		} else if (!Id.equals(other.Id))
+			return false;
+		return true;
+	}
+	@Override
+	public String toString() {
+		return "Authors [Id=" + Id + ", firstName=" + firstName + ", lastName=" + lastName + ", books=" + books + "]";
 	}
 	
 	
