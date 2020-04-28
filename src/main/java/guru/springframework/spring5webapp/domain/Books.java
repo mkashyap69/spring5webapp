@@ -2,6 +2,7 @@
 
 package guru.springframework.spring5webapp.domain;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -21,7 +22,7 @@ public class Books {
 	private String isBn;
 	
 	@ManyToMany
-	private Set<Authors> authors;
+	private Set<Authors> authors=new HashSet<>();
 	public Books() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -29,11 +30,10 @@ public class Books {
 	
 	
 	
-	public Books(String title, String isBn, Set<Authors> authors) {
+	public Books(String title, String isBn) {
 		super();
 		this.title = title;
 		this.isBn = isBn;
-		this.authors = authors;
 	}
 
 
